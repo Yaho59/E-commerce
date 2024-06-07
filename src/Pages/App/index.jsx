@@ -1,12 +1,13 @@
 // import '../../../src/App.css'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
-import { NotFound } from '../../NotFound'
+import { NotFound } from '../NotFound'
 import { Home } from '../Home'
 import { MyAccount } from '../MyAccount'
 import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
 import { SingIn } from '../SingIn'
 import './App.css'
+import { NavBar } from '../../Components/Navbar'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -24,6 +25,7 @@ function App() {
     <>
       <BrowserRouter>
         <AppRoutes />
+        <NavBar />
       </BrowserRouter>
     </>
   )
