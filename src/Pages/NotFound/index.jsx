@@ -1,8 +1,9 @@
 import React from 'react'
+import { Layaout } from '../../Components/Layaout'
 
 function NotFound() {
     return (
-        <div>NotFound</div>
+        <Layaout>NotFound</Layaout>
     )
 }
 

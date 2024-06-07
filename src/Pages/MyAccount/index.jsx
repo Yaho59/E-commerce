@@ -1,8 +1,11 @@
 import React from 'react'
+import { Layaout } from '../../Components/Layaout'
 
 function MyAccount() {
     return (
-        <div>MyAccount</div>
+        <Layaout>
+            Myaccount
+        </Layaout>
     )
 }
 

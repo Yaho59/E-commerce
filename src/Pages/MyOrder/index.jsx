@@ -1,8 +1,9 @@
 import React from 'react'
+import { Layaout } from '../../Components/Layaout'
 
 function MyOrder() {
     return (
-        <div>MyOrder</div>
+        <Layaout>MyOrder</Layaout>
     )
 }
 

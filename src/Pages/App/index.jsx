@@ -9,6 +9,7 @@ import { SingIn } from '../SingIn'
 import './App.css'
 import { NavBar } from '../../Components/Navbar'
 
+
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/', element: <Home /> },

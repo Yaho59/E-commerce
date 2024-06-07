@@ -1,8 +1,11 @@
 import React from 'react'
+import { Layaout } from '../../Components/Layaout'
 
 function SingIn() {
     return (
-        <div>SingIn</div>
+        <Layaout>
+            SingIn
+        </Layaout>
     )
 }
 
