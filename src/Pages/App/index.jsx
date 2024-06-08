@@ -8,6 +8,7 @@ import { MyOrders } from '../MyOrders'
 import { SingIn } from '../SingIn'
 import './App.css'
 import { NavBar } from '../../Components/Navbar'
+import { ShoppingCardProvider } from '../../Context'
 
 
 const AppRoutes = () => {
@@ -23,12 +24,12 @@ const AppRoutes = () => {
 }
 function App() {
   return (
-    <>
+    <ShoppingCardProvider>
       <BrowserRouter>
         <AppRoutes />
         <NavBar />
       </BrowserRouter>
-    </>
+    </ShoppingCardProvider>
   )
 }
 
