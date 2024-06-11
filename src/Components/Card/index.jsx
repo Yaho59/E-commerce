@@ -7,13 +7,27 @@ function Card(data) {
     const { count,
         setCount,
         openProductDetail,
-        setProductDetailShow, } = useContext(shoppingCardContext);
+        setProductDetailShow,
+        addProducts, 
+        setAddProducts,
+        openCheckoutSideMenu, 
+        closeProuctDetail,
+        closeCheckoutSideMenu,} = useContext(shoppingCardContext);
 
-        const showProduct =(productDetail)=>{
-            openProductDetail();
-            setProductDetailShow(productDetail)
-        }
+    const showProduct = (productDetail) => {
+        openProductDetail();
+        setProductDetailShow(productDetail);
+        closeCheckoutSideMenu();
+  
+    }
 
+    const addProductsToCard = (productData) => {
+        setCount(count + 1);
+        setAddProducts([... addProducts, productData]);
+        openCheckoutSideMenu();
+        closeProuctDetail();
+        console.log(addProducts);
+    }
     return (
         <div className='w-56 h-60 cursor-pointer rounded-lg bg-gray-50 shadow'
             onClick={() => showProduct(data.data)}>
@@ -22,7 +36,7 @@ function Card(data) {
                     className='absolute top-0 right-0 m-2 text-white'
                     onClick={(e) => {
                         e.stopPropagation();
-                        setCount(count + 1)
+                        addProductsToCard(data.data)
                     }}
                 />
                 <img className='w-full h-full object-cover rounded-lg' src={data.data.image} alt={data.data.title} />

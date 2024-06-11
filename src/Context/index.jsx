@@ -3,8 +3,11 @@ import React, { createContext, useState } from 'react'
 const shoppingCardContext = createContext();
 
 function ShoppingCardProvider({ children }) {
-
+    //shopping card increment quantity 
     const [count, setCount] = useState(0);
+
+    //shopping card . Add product
+    const [addProducts, setAddProducts] = useState([]);
 
     //Product detail Open/Close
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
@@ -13,6 +16,12 @@ function ShoppingCardProvider({ children }) {
 
     //product detail Show
     const [productDetailShow, setProductDetailShow] = useState({});
+
+    //checkout side menu . Open/Close
+    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+    const openCheckoutSideMenu = ()=> setIsCheckoutSideMenuOpen(true);
+    const closeCheckoutSideMenu = ()=> setIsCheckoutSideMenuOpen(false);
+
 
     return (
         <shoppingCardContext.Provider value={{
@@ -23,7 +32,12 @@ function ShoppingCardProvider({ children }) {
             isProductDetailOpen,
             productDetailShow,
             setProductDetailShow,
-            
+            addProducts, 
+            setAddProducts,
+            isCheckoutSideMenuOpen,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu,
+
         }}>
             {children}
         </shoppingCardContext.Provider>
