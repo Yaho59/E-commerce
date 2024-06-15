@@ -35,12 +35,12 @@ function Card(data) {
         const isInCard = addProducts.filter(product => product.id === id).length > 0;
         if (isInCard) {
             return (<FaCheckCircle
-                className='absolute top-0 right-0 m-2 text-green-300 z-10'
+                className='absolute top-0 right-0 m-2 text-green-300 z-[5]'
             />)
 
         } else {
             return (<FaCirclePlus
-                className='absolute top-0 right-0 m-2 text-white z-10' 
+                className='absolute top-0 right-0 m-2 text-white z-[5]' 
                 onClick={(e) => {
                     e.stopPropagation();
                     addProductsToCard(data.data)

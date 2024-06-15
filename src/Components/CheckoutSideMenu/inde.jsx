@@ -2,6 +2,7 @@ import { MdOutlineClose } from "react-icons/md";
 import React, { useContext } from 'react'
 import { shoppingCardContext } from "../../Context";
 import { OrderCard } from "../OrderCard";
+import { totalPrice } from "../../Utils";
 
 
 function CheckoutSideMenu() {
@@ -22,8 +23,9 @@ function CheckoutSideMenu() {
 
     }
     return (
-        <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} w-[360px] h-h-calc  flex-col fixed right-0 top-[48px] border border-black rounded-lg bg-white`}>
-            <div className='flex justify-between items-center px-4 py-3'>
+        <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} w-[360px] h-h-calc  flex-col  fixed right-0 top-[48px] border border-black rounded-lg bg-white z-10`}>
+
+            <div className='flex justify-between items-center px-4 py-3 border-b'>
                 <h2 className='font-medium text-xl'>Checkout</h2>
                 <MdOutlineClose onClick={() => closeCheckoutSideMenu()} />
             </div>
@@ -40,6 +42,13 @@ function CheckoutSideMenu() {
                         />
                     ))
                 }
+            </div>
+
+            <div className="px-4 py-3 absolute rounded-lg bottom-0 w-[358px]  bg-white border-t">
+                <p className="flex justify-between items-center">
+                    <span >Total:</span>
+                    <span>${totalPrice(addProducts)}</span>
+                </p>
             </div>
         </aside>
     )
