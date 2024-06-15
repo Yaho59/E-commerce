@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
+import '../Card/style.css'
 import { FaCirclePlus } from "react-icons/fa6";
+import { FaCheckCircle } from "react-icons/fa";
 import { shoppingCardContext } from '../../Context';
 
 function Card(data) {
@@ -8,37 +10,52 @@ function Card(data) {
         setCount,
         openProductDetail,
         setProductDetailShow,
-        addProducts, 
+        addProducts,
         setAddProducts,
-        openCheckoutSideMenu, 
+        openCheckoutSideMenu,
         closeProuctDetail,
-        closeCheckoutSideMenu,} = useContext(shoppingCardContext);
+        closeCheckoutSideMenu, } = useContext(shoppingCardContext);
 
     const showProduct = (productDetail) => {
         openProductDetail();
         setProductDetailShow(productDetail);
         closeCheckoutSideMenu();
-  
+
     }
 
     const addProductsToCard = (productData) => {
         setCount(count + 1);
-        setAddProducts([... addProducts, productData]);
+        setAddProducts([...addProducts, productData]);
         openCheckoutSideMenu();
         closeProuctDetail();
         console.log(addProducts);
     }
+
+    const renderIcon = (id) => {
+        const isInCard = addProducts.filter(product => product.id === id).length > 0;
+        if (isInCard) {
+            return (<FaCheckCircle
+                className='absolute top-0 right-0 m-2 text-green-300 z-10'
+            />)
+
+        } else {
+            return (<FaCirclePlus
+                className='absolute top-0 right-0 m-2 text-white z-10' 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    addProductsToCard(data.data)
+                }}
+            />)
+
+        }
+    }
     return (
         <div className='w-56 h-60 cursor-pointer rounded-lg bg-gray-50 shadow'
             onClick={() => showProduct(data.data)}>
-            <figure className='relative mb-2 w-full h-4/5'>
-                <FaCirclePlus
-                    className='absolute top-0 right-0 m-2 text-white'
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        addProductsToCard(data.data)
-                    }}
-                />
+            <figure className='relative mb-2 w-full h-4/5 content'>
+                {
+                    renderIcon(data.data.id)
+                }
                 <img className='w-full h-full object-cover rounded-lg' src={data.data.image} alt={data.data.title} />
                 <span className='absolute bottom-0 left-0 rounded-lg bg-white/60 text-sm px-2  m-2'>{data.data.category}</span>
             </figure>
