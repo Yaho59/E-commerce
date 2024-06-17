@@ -5,7 +5,7 @@ import { shoppingCardContext } from '../../Context';
 
 function NavBar() {
 
-    const activeStyle = 'underline underline-offset-4';
+    const activeStyle = 'underline underline-offset-4 text-[#4B70F5]';
     const { count } = useContext(shoppingCardContext);
 
     return (

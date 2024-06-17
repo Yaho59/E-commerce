@@ -23,13 +23,13 @@ function CheckoutSideMenu() {
 
     }
     return (
-        <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} w-[360px] h-h-calc  flex-col  fixed right-0 top-[48px] border border-black rounded-lg bg-white z-10`}>
+        <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} justify-between w-[360px] h-h-calc  flex-col  fixed right-0 top-[48px] border border-black rounded-lg bg-white z-10`}>
 
             <div className='flex justify-between items-center px-4 py-3 border-b'>
                 <h2 className='font-medium text-xl'>Checkout</h2>
                 <MdOutlineClose onClick={() => closeCheckoutSideMenu()} />
             </div>
-            <div className="flex flex-col overflow-y-auto">
+            <div className="flex flex-col items-center overflow-y-auto h-full">
                 {
                     addProducts.map(product => (
                         <OrderCard
@@ -43,8 +43,7 @@ function CheckoutSideMenu() {
                     ))
                 }
             </div>
-
-            <div className="px-4 py-3 absolute rounded-lg bottom-0 w-[358px]  bg-white border-t">
+            <div className="px-4 py-3 rounded-lg  w-[358px]  bg-white border-t">
                 <p className="flex justify-between items-center">
                     <span >Total:</span>
                     <span>${totalPrice(addProducts)}</span>
