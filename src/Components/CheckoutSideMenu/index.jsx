@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { shoppingCardContext } from "../../Context";
 import { OrderCard } from "../OrderCard";
 import { totalPrice } from "../../Utils";
+import { Link } from "react-router-dom";
 
 
 function CheckoutSideMenu() {
@@ -14,6 +15,8 @@ function CheckoutSideMenu() {
         setAddProducts,
         setCount,
         count,
+        setOrder,
+        order,
     } = useContext(shoppingCardContext);
 
     const handleDelete = (id) => {
@@ -21,6 +24,22 @@ function CheckoutSideMenu() {
         setCount(count - 1);
         setAddProducts(deleteProductCard);
 
+    }
+
+    const handleCheckout = () => {
+        const date = new Date();
+        
+        const orderToAdd = {
+            date: date.toLocaleDateString(),
+            products: addProducts,
+            totalProducts: addProducts.length,
+            totalPrice: totalPrice(addProducts),
+        }
+
+        setOrder([...order, orderToAdd]);
+        setAddProducts([])
+        setCount(0)
+        closeCheckoutSideMenu()
     }
     return (
         <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} justify-between w-[360px] h-h-calc  flex-col  fixed right-0 top-[48px] border border-black rounded-lg bg-white z-10`}>
@@ -48,6 +67,11 @@ function CheckoutSideMenu() {
                     <span >Total:</span>
                     <span>${totalPrice(addProducts)}</span>
                 </p>
+                <Link to='/my-orders/last'>
+                    <button className="rounded-3xl bg-[#4C3BCF] text-[#FFFFFF] w-full py-2 mt-1" onClick={() => handleCheckout()}>
+                        Checkout
+                    </button>
+                </Link>
             </div>
         </aside>
     )

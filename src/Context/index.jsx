@@ -9,6 +9,9 @@ function ShoppingCardProvider({ children }) {
     //shopping card . Add product
     const [addProducts, setAddProducts] = useState([]);
 
+    //shopping card . order
+    const [order, setOrder] = useState([]);
+
     //Product detail Open/Close
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
     const openProductDetail = () => setIsProductDetailOpen(true);
@@ -37,6 +40,8 @@ function ShoppingCardProvider({ children }) {
             isCheckoutSideMenuOpen,
             openCheckoutSideMenu,
             closeCheckoutSideMenu,
+            order,
+            setOrder,
 
         }}>
             {children}

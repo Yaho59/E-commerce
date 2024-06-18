@@ -17,7 +17,7 @@ function OrderCard(props) {
             </div>
             <div className='flex justify-center items-center gap-2'>
                 <p>{price}</p>
-                <MdOutlineClose onClick={() => handleDelete(id)} />
+                {handleDelete && <MdOutlineClose onClick={() => handleDelete(id)} />}
             </div>
         </div>
     )
