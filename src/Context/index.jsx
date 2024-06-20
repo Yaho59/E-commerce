@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 const shoppingCardContext = createContext();
 
@@ -22,8 +22,33 @@ function ShoppingCardProvider({ children }) {
 
     //checkout side menu . Open/Close
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
-    const openCheckoutSideMenu = ()=> setIsCheckoutSideMenuOpen(true);
-    const closeCheckoutSideMenu = ()=> setIsCheckoutSideMenuOpen(false);
+    const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+    const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
+    //Get products de la API
+    const [items, setItem] = useState(null);
+
+    //Get articles filtered by title
+    const [itemsFiltered, setItemsFiltered] = useState(null);
+
+    //Get products by search
+    const [searchByTitle, setSearchByTitle] = useState();
+
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(data => setItem(data));
+    }, [])
+
+    const itemsFilteredByTitle = (items, searchByTitle) => {
+        return items?.filter(item=> item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+    }
+
+    useEffect(()=>{
+        if (searchByTitle) setItemsFiltered(itemsFilteredByTitle(items, searchByTitle)) 
+
+    }, [items, searchByTitle])
 
 
     return (
@@ -35,13 +60,18 @@ function ShoppingCardProvider({ children }) {
             isProductDetailOpen,
             productDetailShow,
             setProductDetailShow,
-            addProducts, 
+            addProducts,
             setAddProducts,
             isCheckoutSideMenuOpen,
             openCheckoutSideMenu,
             closeCheckoutSideMenu,
             order,
             setOrder,
+            items,
+            searchByTitle,
+            setSearchByTitle,
+            itemsFiltered,
+            setItemsFiltered
 
         }}>
             {children}
