@@ -20,7 +20,7 @@ function OrdersCard(props) {
                 <FaMoneyCheckDollar /><span className='font-semibold'>${totalPrice}</span>
             </p>
             <p className='flex items-center  gap-1 text-sm font-light'>
-                <span>Details</span><IoChevronForward />
+                <span className='underline'>Details</span><IoChevronForward />
             </p>
         </div>
     )

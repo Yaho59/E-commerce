@@ -6,8 +6,7 @@ import { shoppingCardContext } from '../../Context';
 
 function Card(data) {
 
-    const { count,
-        setCount,
+    const {
         openProductDetail,
         setProductDetailShow,
         addProducts,
@@ -24,11 +23,9 @@ function Card(data) {
     }
 
     const addProductsToCard = (productData) => {
-        setCount(count + 1);
         setAddProducts([...addProducts, productData]);
         openCheckoutSideMenu();
         closeProuctDetail();
-        console.log(addProducts);
     }
 
     const renderIcon = (id) => {
@@ -40,7 +37,7 @@ function Card(data) {
 
         } else {
             return (<FaCirclePlus
-                className='absolute top-0 right-0 m-2 text-white z-[5]' 
+                className='absolute top-0 right-0 m-2 text-white z-[5]'
                 onClick={(e) => {
                     e.stopPropagation();
                     addProductsToCard(data.data)

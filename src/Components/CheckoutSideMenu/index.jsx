@@ -13,15 +13,13 @@ function CheckoutSideMenu() {
         closeCheckoutSideMenu,
         addProducts,
         setAddProducts,
-        setCount,
-        count,
         setOrder,
         order,
+        setSearchByTitle,
     } = useContext(shoppingCardContext);
 
     const handleDelete = (id) => {
         const deleteProductCard = addProducts.filter(product => product.id != id);
-        setCount(count - 1);
         setAddProducts(deleteProductCard);
 
     }
@@ -38,8 +36,8 @@ function CheckoutSideMenu() {
 
         setOrder([...order, orderToAdd]);
         setAddProducts([])
-        setCount(0)
         closeCheckoutSideMenu()
+        setSearchByTitle()
     }
     return (
         <aside className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} justify-between w-[360px] h-h-calc  flex-col  fixed right-0 top-[48px] border border-black rounded-lg bg-white z-10`}>

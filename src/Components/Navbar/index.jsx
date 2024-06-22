@@ -6,19 +6,21 @@ import { shoppingCardContext } from '../../Context';
 function NavBar() {
 
     const activeStyle = 'underline underline-offset-4 text-[#4B70F5]';
-    const { count } = useContext(shoppingCardContext);
+    const { setSearchByCategory, addProducts, openCheckoutSideMenu, } = useContext(shoppingCardContext);
 
     return (
         <nav className='flex justify-between w-full h-auto items-center fixed top-0 z-10 bg-slate-100 shadow-lg shadow-black-500/40 py-[10px] px-[20px] font-light'>
             <ul className='flex gap-3 items-center'>
                 <li className='font-semibold text-lg text-lime-400 '>
-                    <NavLink to='/'>
+                    <NavLink to='/'
+                    onClick={() => setSearchByCategory()}>
                         WackySale
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
                         to='/'
+                        onClick={() => setSearchByCategory()}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }
@@ -29,6 +31,7 @@ function NavBar() {
                 <li>
                     <NavLink
                         to='clothes'
+                        onClick={() => setSearchByCategory(`Men's Clothing`)}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }
@@ -36,44 +39,37 @@ function NavBar() {
                         Clothes
                     </NavLink>
                 </li>
+                {/* <li>
+                    <NavLink
+                        to='clothes-women'
+                        onClick={() => setSearchByCategory(`Women's Clothing`)}
+                        className={({ isActive }) =>
+                            isActive ? activeStyle : undefined
+                        }
+                    >
+                        Women's Clothing
+                    </NavLink>
+                </li> */}
                 <li>
                     <NavLink
                         to='electronics'
+                        onClick={() => setSearchByCategory('electronics')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }
                     >
-                        Elecronics
+                        Electronics
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to='furnitures'
+                        to='jewelery'
+                        onClick={() => setSearchByCategory('jewelery')}
                         className={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }
                     >
-                        Furnitures
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to='toys'
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }
-                    >
-                        Toys
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to='others'
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }
-                    >
-                        Others
+                        Jewelery
                     </NavLink>
                 </li>
             </ul>
@@ -112,7 +108,7 @@ function NavBar() {
                     </NavLink>
                 </li>
                 <li className='flex items-center cursor-pointer'>
-                    <GiShoppingCart size={21}/><span className='text-xs font-semibold'>{count}</span>
+                    <GiShoppingCart size={21} onClick={()=> openCheckoutSideMenu()} /><span className='text-xs font-semibold'>{addProducts.length}</span>
                 </li>
             </ul>
         </nav>

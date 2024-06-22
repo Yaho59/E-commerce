@@ -7,7 +7,7 @@ import { shoppingCardContext } from "../../Context";
 import { PiMagnifyingGlass } from "react-icons/pi";
 
 function Home() {
-    const { items, setSearchByTitle, searchByTitle, itemsFiltered, } = useContext(shoppingCardContext);
+    const { setSearchByTitle, itemsFiltered, } = useContext(shoppingCardContext);
 
     return (
         <Layaout>
@@ -20,19 +20,14 @@ function Home() {
             </div>
             <div className="grid gap-4 grid-cols-auto-fill-240 w-full place-content-center max-w-screen-lg" >
                 {
-                    searchByTitle?.length > 0 ? (
-                        itemsFiltered?.length > 0 ? (
-                            itemsFiltered.map(item => (
-                                <Card key={item.id} data={item} />
-                            ))
-                        ) : (
-                            <p className="text-center font-medium">No results found for this product <span className="font-light">Check your spelling or use more general terms.</span></p>
-                            
-                        )
-                    ) : (
-                        items?.map(item => (
+
+                    itemsFiltered?.length > 0 ? (
+                        itemsFiltered.map(item => (
                             <Card key={item.id} data={item} />
                         ))
+                    ) : (
+                        <p className="text-center font-medium">No results found for this product <span className="font-light">Check your spelling or use more general terms.</span></p>
+
                     )
                 }
             </div>
