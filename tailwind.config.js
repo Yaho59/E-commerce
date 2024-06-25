@@ -10,7 +10,7 @@ export default {
         // Nombre de la clase personalizada y su correspondiente valor CSS
         'auto-fill-240': 'repeat(auto-fill, 240px)',
       },
-      height:{
+      height: {
         'h-calc': 'calc(100vh - 48px)',
       }
     },

@@ -13,7 +13,8 @@ function Card(data) {
         setAddProducts,
         openCheckoutSideMenu,
         closeProuctDetail,
-        closeCheckoutSideMenu, } = useContext(shoppingCardContext);
+        closeCheckoutSideMenu,
+        closeMenu, } = useContext(shoppingCardContext);
 
     const showProduct = (productDetail) => {
         openProductDetail();
@@ -40,7 +41,8 @@ function Card(data) {
                 className='absolute top-0 right-0 m-2 text-white z-[5]'
                 onClick={(e) => {
                     e.stopPropagation();
-                    addProductsToCard(data.data)
+                    addProductsToCard(data.data);
+                    closeMenu();
                 }}
             />)
 
@@ -48,7 +50,10 @@ function Card(data) {
     }
     return (
         <div className='w-56 h-60 cursor-pointer rounded-lg bg-gray-50 shadow'
-            onClick={() => showProduct(data.data)}>
+            onClick={() => {
+                showProduct(data.data);
+                closeMenu();
+            }}>
             <figure className='relative mb-2 w-full h-4/5 content'>
                 {
                     renderIcon(data.data.id)

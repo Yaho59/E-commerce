@@ -11,12 +11,12 @@ function Home() {
 
     return (
         <Layaout>
-            <div className="w-[525px] mb-5 rounded-3xl flex justify-center items-center border border[#dfe1e5] hover:shadow">
+            <div className="w-[300px]  mb-5 rounded-3xl flex justify-center items-center border border[#dfe1e5] hover:shadow lg:w-[525px]">
                 <input type="text"
                     placeholder="search a product"
-                    className="w-[435px] h-10 outline-none"
+                    className="w-[260px] h-10 outline-none font-light lg:w-[435px]"
                     onChange={(event) => setSearchByTitle(event.target.value)} />
-                <PiMagnifyingGlass />
+                <PiMagnifyingGlass className="text-[#4C3BCF]"/>
             </div>
             <div className="grid gap-4 grid-cols-auto-fill-240 w-full place-content-center max-w-screen-lg" >
                 {

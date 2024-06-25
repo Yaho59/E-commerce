@@ -7,7 +7,7 @@ function ProductDetail() {
   const { isProductDetailOpen, closeProuctDetail,
     productDetailShow, } = useContext(shoppingCardContext);
   return (
-    <aside className={`${isProductDetailOpen ? 'flex' : 'hidden'} w-[360px] h-h-calc  flex-col fixed right-0 top-[48px] border border-black rounded-lg bg-white z-10`}>
+    <aside className={`${isProductDetailOpen ? 'flex' : 'hidden'} w-full h-h-calc  flex-col fixed right-0 top-[48px] border border-black rounded-lg bg-white z-10 sm:w-[360px]`}>
       <div className='flex justify-between items-center px-4 py-3'>
         <h2 className='font-medium text-xl'>Detail</h2>
         <MdOutlineClose onClick={() => closeProuctDetail()} />

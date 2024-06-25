@@ -14,8 +14,13 @@ function ShoppingCardProvider({ children }) {
 
     //Product detail Open/Close
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-    const openProductDetail = () => setIsProductDetailOpen(true);
-    const closeProuctDetail = () => setIsProductDetailOpen(false);
+    const openProductDetail = () => {
+        setIsProductDetailOpen(true)
+    }
+    const closeProuctDetail = () => {
+        setIsProductDetailOpen(false)
+        closeMenu();
+    }
 
     //product detail Show
     const [productDetailShow, setProductDetailShow] = useState({});
@@ -24,6 +29,23 @@ function ShoppingCardProvider({ children }) {
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
     const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
     const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const openMenu = () => {
+        closeProuctDetail();
+        closeCheckoutSideMenu();
+        setIsMenuOpen(true);
+    }
+    const closeMenu = () => setIsMenuOpen(false);
+
+    const toggleMenu = () => {
+        if (isMenuOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+
+    };
 
     //Get products de la API
     const [items, setItem] = useState(null);
@@ -97,6 +119,10 @@ function ShoppingCardProvider({ children }) {
             setItemsFiltered,
             searchByCategory,
             setSearchByCategory,
+            isMenuOpen,
+            openMenu,
+            closeMenu,
+            toggleMenu,
         }}>
             {children}
         </shoppingCardContext.Provider>

@@ -9,6 +9,7 @@ import { SingIn } from '../SingIn'
 import './App.css'
 import { NavBar } from '../../Components/Navbar'
 import { ShoppingCardProvider } from '../../Context'
+import NavbarMovil from '../../Components/NavbarMovil'
 
 
 const AppRoutes = () => {
@@ -34,6 +35,7 @@ function App() {
       <BrowserRouter>
         <AppRoutes />
         <NavBar />
+        <NavbarMovil />
       </BrowserRouter>
     </ShoppingCardProvider>
   )
