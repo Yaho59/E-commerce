@@ -6,6 +6,13 @@ import { shoppingCardContext } from '../../Context';
 function NavbarLink() {
 
     const activeStyle = 'underline underline-offset-4 text-[#4B70F5]';
+
+    const getClassNames = (isActive) => {
+        const baseClasses = 'hover:text-[#4B70F5]';
+        const activeClasses = isActive ? activeStyle : '';
+        return `${activeClasses} ${baseClasses}`.trim();
+    };
+
     const { setSearchByCategory, addProducts, openCheckoutSideMenu, closeMenu, } = useContext(shoppingCardContext);
     return (
         <>
@@ -26,8 +33,7 @@ function NavbarLink() {
                             setSearchByCategory()
                             closeMenu()
                         }}
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
+                        className={({ isActive }) => getClassNames(isActive)
                         }
                     >
                         All
@@ -40,9 +46,7 @@ function NavbarLink() {
                             setSearchByCategory(`Men's Clothing`)
                             closeMenu()
                         }}
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }
+                        className={({ isActive }) => getClassNames(isActive)}
                     >
                         Clothes
                     </NavLink>
@@ -65,9 +69,7 @@ function NavbarLink() {
                             setSearchByCategory('electronics');
                             closeMenu()
                         }}
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }
+                        className={({ isActive }) => getClassNames(isActive)}
                     >
                         Electronics
                     </NavLink>
@@ -80,9 +82,7 @@ function NavbarLink() {
                             closeMenu()
                         }
                         }
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }
+                        className={({ isActive }) => getClassNames(isActive)}
                     >
                         Jewelery
                     </NavLink>
@@ -96,9 +96,7 @@ function NavbarLink() {
                     <NavLink
                         to='my-orders'
                         onClick={() => closeMenu()}
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }
+                        className={({ isActive }) => getClassNames(isActive)}
                     >
                         My Orders
                     </NavLink>
@@ -107,22 +105,17 @@ function NavbarLink() {
                     <NavLink
                         to='my-account'
                         onClick={() => closeMenu()}
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }
+                        className={({ isActive }) => getClassNames(isActive)}
                     >
                         My Account
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to='sing-in'
                         onClick={() => closeMenu()}
-                        className={`${({ isActive }) =>
-                            isActive ? activeStyle : undefined} text-lime-400 lg:text-black`
-                        }
+                        className={'text-lime-400 lg:text-black'}
                     >
-                        Sing In
+                        Sign out
                     </NavLink>
                 </li>
                 <li className='hidden items-center cursor-pointer lg:flex'>

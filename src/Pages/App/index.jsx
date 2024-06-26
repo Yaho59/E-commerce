@@ -5,11 +5,12 @@ import { Home } from '../Home'
 import { MyAccount } from '../MyAccount'
 import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
-import { SingIn } from '../SingIn'
+// import { SingIn } from '../SingIn'
 import './App.css'
 import { NavBar } from '../../Components/Navbar'
 import { ShoppingCardProvider } from '../../Context'
 import NavbarMovil from '../../Components/NavbarMovil'
+import { Footer } from '../../Components/Footer'
 
 
 const AppRoutes = () => {
@@ -24,7 +25,7 @@ const AppRoutes = () => {
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-orders/last', element: <MyOrder /> },
     { path: '/my-orders/:id', element: <MyOrder /> },
-    { path: '/sing-in', element: <SingIn /> },
+    // { path: '/sing-in', element: <SingIn /> },
     { path: '/*', element: <NotFound /> },
   ])
   return routes;
@@ -35,8 +36,9 @@ function App() {
       <BrowserRouter>
         <AppRoutes />
         <NavBar />
-        <NavbarMovil />
+        <NavbarMovil /> 
       </BrowserRouter>
+      <Footer />
     </ShoppingCardProvider>
   )
 }

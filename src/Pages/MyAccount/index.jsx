@@ -5,7 +5,7 @@ function MyAccount() {
     return (
         <Layaout>
             <div className="w-[300px]">
-                <h1 className='text-lg text-start mb-9'>My account</h1>
+                <h1 className='text-lg text-start mb-9 font-light'>My account</h1>
 
                 <form className=' flex flex-col'>
                     <div className='flex flex-col'>
