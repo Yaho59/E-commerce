@@ -89,10 +89,10 @@ function ShoppingCardProvider({ children }) {
 
 
     useEffect(() => {
-        if (searchByCategory && searchByTitle) setItemsFiltered(filterBy('BY_CATEGORY_AND_TITLE', items, searchByTitle, searchByCategory))
-        if (searchByTitle && !searchByCategory) setItemsFiltered(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
-        if (searchByCategory && !searchByTitle) setItemsFiltered(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
-        if (!searchByCategory && !searchByTitle) setItemsFiltered(filterBy(null, items, searchByTitle, searchByCategory))
+            if (searchByCategory && searchByTitle) setItemsFiltered(filterBy('BY_CATEGORY_AND_TITLE', items, searchByTitle, searchByCategory))
+            if (searchByTitle && !searchByCategory) setItemsFiltered(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
+            if (searchByCategory && !searchByTitle) setItemsFiltered(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
+            if (!searchByCategory && !searchByTitle) setItemsFiltered(filterBy(null, items, searchByTitle, searchByCategory))
     }, [items, searchByTitle, searchByCategory])
 
 

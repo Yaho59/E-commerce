@@ -10,7 +10,6 @@ import './App.css'
 import { NavBar } from '../../Components/Navbar'
 import { ShoppingCardProvider } from '../../Context'
 import NavbarMovil from '../../Components/NavbarMovil'
-import { Footer } from '../../Components/Footer'
 
 
 const AppRoutes = () => {
@@ -38,7 +37,6 @@ function App() {
         <NavBar />
         <NavbarMovil /> 
       </BrowserRouter>
-      <Footer />
     </ShoppingCardProvider>
   )
 }

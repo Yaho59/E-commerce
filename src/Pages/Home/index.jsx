@@ -5,9 +5,10 @@ import { CheckoutSideMenu } from "../../Components/CheckoutSideMenu/index";
 import { useContext } from "react";
 import { shoppingCardContext } from "../../Context";
 import { PiMagnifyingGlass } from "react-icons/pi";
+import LoadingSkeleton from "../../Components/LoadingSkeleton";
 
 function Home() {
-    const { setSearchByTitle, itemsFiltered, } = useContext(shoppingCardContext);
+    const { setSearchByTitle, itemsFiltered, items } = useContext(shoppingCardContext);
 
     return (
         <Layaout>
@@ -16,17 +17,28 @@ function Home() {
                     placeholder="search a product"
                     className="w-[260px] h-10 outline-none font-light lg:w-[435px]"
                     onChange={(event) => setSearchByTitle(event.target.value)} />
-                <PiMagnifyingGlass className="text-[#4C3BCF]"/>
+                <PiMagnifyingGlass className="text-[#4C3BCF]" />
             </div>
             <div className="grid gap-4 grid-cols-auto-fill-240 w-full h-auto place-content-center max-w-screen-lg" >
                 {
+                    items?.length > 0 ? (
+                        itemsFiltered?.length > 0 ? (
+                            itemsFiltered.map(item => (
+                                <Card key={item.id} data={item} />
+                            ))
+                        ) : (
+                            <p className="text-center font-medium">No results found for this product <span className="font-light">Check your spelling or use more general terms.</span></p>
 
-                    itemsFiltered?.length > 0 ? (
-                        itemsFiltered.map(item => (
-                            <Card key={item.id} data={item} />
-                        ))
-                    ) : (
-                        <p className="text-center font-medium">No results found for this product <span className="font-light">Check your spelling or use more general terms.</span></p>
+                        )) : (
+                        <>
+                            <LoadingSkeleton />
+                            <LoadingSkeleton />
+                            <LoadingSkeleton />
+                            <LoadingSkeleton />
+                            <LoadingSkeleton />
+                            <LoadingSkeleton />
+                            <LoadingSkeleton />
+                        </>
 
                     )
                 }
